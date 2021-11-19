@@ -1,366 +1,190 @@
-  
 {
-    "account_code_blocks": 
-    [
-    {
-        "code": "_ABM",
-        "name": "Sample ABM at Stream Level",
-        "content": "<script>window.updatedABMstreams2020 = window.updatedABMstreams2020 || [];\r\nwindow.streamInfo2020 = window.streamInfo2020 || {};       \r\nconst on = {{stream_app_on}};\r\nwindow.streamAppOn = on;\r\nconst stream_id = Hubs.appInstance.currentCollectionId;\r\nif(on === true) {\r\n  window.updatedABMstreams2020 = [stream_id];\r\n  const csc = [\r\n    {streamId: {{csc_stream_a}}, tabTitle: '{{csc_tab_title_a}}'},\r\n    {streamId: {{csc_stream_b}}, tabTitle: '{{csc_tab_title_b}}'},\r\n    {streamId: {{csc_stream_c}}, tabTitle: '{{csc_tab_title_c}}'},\r\n    {streamId: {{csc_stream_d}}, tabTitle: '{{csc_tab_title_d}}'},\r\n    {streamId: {{csc_stream_e}}, tabTitle: '{{csc_tab_title_e}}'}\r\n  ];\r\n    \r\n  window.streamInfo2020 = {\r\n    [stream_id]: {\r\n    templateType: \"{{template_type}}\", \r\n    industry: \"{{industry}}\", \r\n    topHeading: \"{{top_heading}}\", \r\n    bottomHeading: \"{{bottom_heading}}\", \r\n    subHeading: \"{{sub_heading}}.\", \r\n    salesRepId: \"{{sales_rep_id}}\", \r\n    showDataBlocks: {{show_data_blocks}}, \r\n    eventsHeadline: \"{{events_headline}}\", \r\n    companySpecificContent: [],\r\n    companyContentTileAmount: {{company_content_tile_amount}}, \r\n    midPageAdPlacement: {{mid_page_ad_placement}},\r\n    quoteSectionTitle: \"{{quote_section_title}}\"\r\n\r\n    }\r\n  };\r\n  let note = \"{{s_rep_pm}}\";\r\n  \r\n  if(note !== 'empty'){\r\n    window.salesRepInfo[\"{{sales_rep_id}}\"].repPersonalNote[stream_id] = note;\r\n  }\r\n  csc.forEach((item) => {\r\n    if(item.streamId !== 'empty' && typeof item.streamId === 'number') {\r\n      window.streamInfo2020[stream_id].companySpecificContent.push(item);\r\n    }\r\n  });\r\n};<\/script>",
-        "placement_code": "BODY_BOTTOM",
-        "description": "where does this code live"
-    }
+    "account_code_blocks": [
+        {
+            "code": "_ABM",
+            "name": "Sample ABM at Stream Level",
+            "content": "",
+            "placement_code": "BODY_BOTTOM",
+            "description": "where does this code live"
+        }
     ],
-    "config_fields": 
-    [
-    {
-        "code": "_APPON",
-        "name": "stream_app_on",   
-        "label": "Apply ABM template",
-        "ordinal": 0,
-        "category": "integrations",
-        "control_type": "toggle",
-        "scopes": ["stream"],
-        "description": "Toggle on to enable the ABM template.",
-        "default_value": false
-    },
-    {
-        "code": "_TEMPLATE_TYPE",
-        "name": "template_type",   
-        "label": "Template Type",
-        "ordinal": 1,
-        "category": "integrations",
-        "control_type": "select_dropdown",
-        "scopes": ["stream"],
-        "description": "From the dropdown menu, select the template type",
-        "default_value": 0,
-        "control_props":
+    "config_fields": [
         {
-            "placeholder": "Please select value",
-            "items": [
-            {"text": "Enterprise", "value": "enterprise"},
-            {"text": "Large Account", "value": "largeAccount"}
-            ]
-        }
-    },
-    {
-        "code": "_INDUSTRY",
-        "name": "industry",   
-        "label": "Industry",
-        "ordinal": 2,
-        "category": "integrations",
-        "control_type": "select_dropdown",
-        "scopes": ["stream"],
-        "description": "From the dropdown menu, select the industry.",
-        "default_value": 0,
-        "control_props":
-        {
-            "placeholder": "Please select value",
-            "items": [
-            {"text": "Other", "value": "Other"},
-            {"text": "Advertising, Media, Ent", "value": "Advertising, Media & Entertainment"},
-            {"text": "Consulting", "value": "Consulting"},
-            {"text": "Construction", "value": "Construction"},
-            {"text": "Energy", "value": "Energy"},
-            {"text": "Education", "value": "Education"},
-            {"text": "Federal", "value": "Federal"},
-            {"text": "Financial Services", "value": "Financial Services"},
-            {"text": "Food", "value": "Food"},
-            {"text": "Healthcare", "value": "healthcare"},
-            {"text": "Hotel", "value": "Hotel"},
-            {"text": "Life Sciences", "value": "Life Sciences"},
-            {"text": "Manufacturing", "value": "Manufacturing"},
-            {"text": "Media", "value": "Media"},
-            {"text": "Retail & CPG", "value": "Retail & CPG"},
-            {"text": "State & Local Government", "value": "State and Local Government"},
-            {"text": "Technology", "value": "Technology"},
-            {"text": "Travel and Hospitality", "value": "Travel and Hospitality"},
-            {"text": "Warehouse", "value": "Warehouse"}
-        ]
-        }
-    },
-    {
-        "code": "_TOP_HEADING",
-        "name": "top_heading",   
-        "label": "Top Heading",
-        "ordinal": 3,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "What text would you like displayed in the top heading?",
-        "default_value": "Get unlimited data access",
-        "control_props":
-        {
-            "placeholder": "Get unlimited data access"
-        }
-    },
-    {
-        "code": "_BOTTOM_HEADING",
-        "name": "bottom_heading",   
-        "label": "Bottom Heading",
-        "ordinal": 4,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "What text would you like displayed in the bottom heading?",
-        "default_value": "for faster decisions",
-        "control_props":
-        {
-            "placeholder": "for faster decisions"
-        }
-    },
-    {
-        "code": "_SUB_HEADING",
-        "name": "sub_heading",   
-        "label": "Sub-Heading",
-        "ordinal": 5,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "What text would you like displayed in the sub-heading?",
-        "default_value": "Make data decisions faster and backed by more data and insights than before.",
-        "control_props":
-        {
-            "placeholder": "Make data decisions faster and backed by more data and insights than before."
-        }
-    },
-    {
-        "code": "_SALES_REP_ID",
-        "name": "sales_rep_id",   
-        "label": "Sales Rep ID",
-        "ordinal": 6,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Add the Sales Rep's email address [ALL TEXT MUST BE ALL LOWERCASE]",
-        "default_value": "contactexpert-DL@snowflake.com",
-        "control_props":
-        {
-            "placeholder": "ted.lasso@snowflake.com"
-        }
-    },
-    {
-        "code": "_SHOW_DATA_BLOCKS",
-        "name": "show_data_blocks",   
-        "label": "Show Data Blocks",
-        "ordinal": 7,
-        "category": "integrations",
-        "control_type": "toggle",
-        "scopes": ["stream"],
-        "description": "Toggle on to see the Data Blocks [CTAs must be added to the stream]",
-        "default_value": false
-    },
-    {
-        "code": "_EVENTS_HEADLINE",
-        "name": "events_headline",   
-        "label": "Events Headline",
-        "ordinal": 8,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "What text would you like displayed in the Events' headline?",
-        "default_value": "Get Connected",
-        "control_props":
-        {
-            "placeholder": "Get Connected"
-        }
-    },
-    {
-        "code": "_COMPANY_CONTENT_TILE_AMOUNT",
-        "name": "company_content_tile_amount",   
-        "label": "Number of Company Content Tiles",
-        "ordinal": 9,
-        "category": "integrations",
-        "control_type": "number",
-        "scopes": ["stream"],
-        "description": "How many items would you like displayed in each Company Specific Content section?",
-        "default_value": 4,
-        "validation":
-        {
-        "min": 0,
-        "max": 20
-        }
-    },
-    {
-        "code": "_MID_PAGE_AD_PLACEMENT",
-        "name": "mid_page_ad_placement",   
-        "label": "Mid-Page ",
-        "ordinal": 10,
-        "category": "integrations",
-        "control_type": "toggle",
-        "scopes": ["stream"],
-        "description": "Do you want to add a Mid Page ad to this stream?",
-        "default_value": true
-    },
-    {
-        "code": "_QUOTE_SECTION_TITLE",
-        "name": "quote_section_title",   
-        "label": "Quote Section Title",
-        "ordinal": 11,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "What would you like the Quote section title to be?",
-        "default_value": "Hear from our customers",
-        "control_props":
-        {
-            "placeholder": "Hear from our customers"
-        }
-    },
-    {
-        "code": "_SALES_REP_PERSONAL_MESSAGE",
-        "name": "s_rep_pm",   
-        "label": "Sales Rep Personal Message",
-        "ordinal": 12,
-        "category": "integrations",
-        "control_type": "textarea",
-        "scopes": ["stream"],
-        "description": "What text would you like displayed as a personal message from the Sales Rep?",
-        "default_value": "empty"
-    },
-    {
-        "code": "_COMPANY_CONTENT_STREAM_A",
-        "name": "csc_stream_a",   
-        "label": "Company Specific Content Stream ID 'A'",
-        "ordinal": 13,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Please add the stream ID of the company specific content stream you are adding [NOTE: NUMBERS ONLY].",
-        "control_props":
-        {
-            "placeholder": "9632584"
+            "code": "_MOUSERAPPON",
+            "name": "mouser_app_on",
+            "label": "Turn On CTA Placement",
+            "ordinal": 0,
+            "category": "integrations",
+            "control_type": "toggle",
+            "scopes": [
+                "stream"
+            ],
+            "default_value": false
         },
-        "default_value": "'empty'"
-    },
-    {
-        "code": "_COMPANY_CONTENT_TAB_TITLE_A",
-        "name": "csc_tab_title_a",   
-        "label": "Tab Title for the company specific content 'A'",
-        "ordinal": 14,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Tab Title to appear beside 'Just For You'",
-        "control_props":
         {
-            "placeholder": "Security Compliance"
-        }
-    },
-    {
-        "code": "_COMPANY_CONTENT_STREAM_B",
-        "name": "csc_stream_b",   
-        "label": "Company Specific Content Stream ID 'B'",
-        "ordinal": 15,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Please add the stream ID of the company specific content stream you are adding [NOTE: NUMBERS ONLY]",
-        "control_props":
-        {
-            "placeholder": "9632584"
+            "code": "_MOUSER_CTA_ID_A",
+            "name": "mouser_cta_id_a",
+            "label": "CTA ID 'A'",
+            "ordinal": 10,
+            "category": "integrations",
+            "control_type": "textbox",
+            "scopes": [
+                "stream"
+            ],
+            "description": "Please add the CTA ID for the CTA to be placed after 20 items [NOTE: NUMBERS ONLY].",
+            "control_props": {
+                "placeholder": "337760"
+            },
+            "default_value": "'empty'"
         },
-        "default_value": "'empty'"
-    },
-    {
-        "code": "_COMPANY_CONTENT_TAB_TITLE_B",
-        "name": "csc_tab_title_b",   
-        "label": "Tab Title for the company specific content 'B'",
-        "ordinal": 16,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Tab Title to appear beside 'Just For You'",
-        "control_props":
         {
-            "placeholder": "Security Compliance"
-        }
-    },
-    {
-        "code": "_COMPANY_CONTENT_STREAM_C",
-        "name": "csc_stream_c",   
-        "label": "Company Specific Content Stream ID 'C'",
-        "ordinal": 16,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Please add the stream ID of the company specific content stream you are adding [NOTE: NUMBERS ONLY]",
-        "control_props":
-        {
-            "placeholder": "9632584"
+            "code": "_CTA_PLACEMENT_POS_A",
+            "name": "mouser_pos_a",
+            "label": "After item position 'A'",
+            "ordinal": 15,
+            "category": "integrations",
+            "control_type": "number",
+            "scopes": [
+                "stream"
+            ],
+            "description": "After which tile do you want the CTA to be placed.",
+            "control_props": {
+                "validation": {
+                    "min": 20
+                }
+            }
         },
-        "default_value": "'empty'"
-    },
-    {
-        "code": "_COMPANY_CONTENT_TAB_TITLE_C",
-        "name": "csc_tab_titl_c",   
-        "label": "Tab Title for the company specific content 'C'",
-        "ordinal": 17,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Tab Title to appear beside 'Just For You'",
-        "control_props":
         {
-            "placeholder": "Security Compliance"
-        }
-    },
-    {
-        "code": "_COMPANY_CONTENT_STREAM_D",
-        "name": "csc_stream_d",   
-        "label": "Company Specific Content Stream ID 'D'",
-        "ordinal": 18,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Please add the stream ID of the company specific content stream you are adding [NOTE: NUMBERS ONLY]",
-        "control_props":
-        {
-            "placeholder": "9632584"
+            "code": "_MOUSER_CTA_ID_B",
+            "name": "mouser_cta_id_b",
+            "label": "CTA ID 'B'",
+            "ordinal": 20,
+            "category": "integrations",
+            "control_type": "textbox",
+            "scopes": [
+                "stream"
+            ],
+            "description": "Please add the CTA ID for the CTA to be placed after 20 items [NOTE: NUMBERS ONLY].",
+            "control_props": {
+                "placeholder": "337760"
+            },
+            "default_value": "'empty'"
         },
-        "default_value": "'empty'"
-    },
-    {
-        "code": "_COMPANY_CONTENT_TAB_TITLE_D",
-        "name": "csc_tab_title_d",   
-        "label": "Tab Title for the company specific content 'D'",
-        "ordinal": 19,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Tab Title to appear beside 'Just For You'",
-        "control_props":
         {
-            "placeholder": "Security Compliance"
-        }
-    },
-    {
-        "code": "_COMPANY_CONTENT_STREAM_E",
-        "name": "csc_stream_e",   
-        "label": "Company Specific Content Stream ID 'E'",
-        "ordinal": 20,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Please add the stream ID of the company specific content stream you are adding [NOTE: NUMBERS ONLY]",
-        "control_props":
-        {
-            "placeholder": "9632584"
+            "code": "_CTA_PLACEMENT_POS_B",
+            "name": "mouser_pos_b",
+            "label": "After item position 'B'",
+            "ordinal": 25,
+            "category": "integrations",
+            "control_type": "number",
+            "scopes": [
+                "stream"
+            ],
+            "description": "After which tile do you want the CTA to be placed.",
+            "control_props": {
+                "validation": {
+                    "min": 20
+                }
+            }
         },
-        "default_value": "'empty'"
-    },
-    {
-        "code": "_COMPANY_CONTENT_TAB_TITLE_E",
-        "name": "csc_tab_title_e",   
-        "label": "Tab Title for the company specific content 'E'",
-        "ordinal": 21,
-        "category": "integrations",
-        "control_type": "textbox",
-        "scopes": ["stream"],
-        "description": "Tab Title to appear beside 'Just For You'",
-        "control_props":
         {
-            "placeholder": "Security Compliance"
+            "code": "_MOUSER_CTA_ID_C",
+            "name": "mouser_cta_id_c",
+            "label": "CTA ID 'C'",
+            "ordinal": 30,
+            "category": "integrations",
+            "control_type": "textbox",
+            "scopes": [
+                "stream"
+            ],
+            "description": "Please add the CTA ID for the CTA to be placed after 20 items [NOTE: NUMBERS ONLY].",
+            "control_props": {
+                "placeholder": "337760"
+            },
+            "default_value": "'empty'"
+        },
+        {
+            "code": "_CTA_PLACEMENT_POS_C",
+            "name": "mouser_pos_c",
+            "label": "After item position 'C'",
+            "ordinal": 35,
+            "category": "integrations",
+            "control_type": "number",
+            "scopes": [
+                "stream"
+            ],
+            "description": "After which tile do you want the CTA to be placed.",
+            "control_props": {
+                "validation": {
+                    "min": 20
+                }
+            }
+        },
+        {
+            "code": "_MOUSER_CTA_ID_D",
+            "name": "mouser_cta_id_d",
+            "label": "CTA ID 'D'",
+            "ordinal": 40,
+            "category": "integrations",
+            "control_type": "textbox",
+            "scopes": [
+                "stream"
+            ],
+            "description": "Please add the CTA ID for the CTA to be placed after 20 items [NOTE: NUMBERS ONLY].",
+            "control_props": {
+                "placeholder": "337760"
+            },
+            "default_value": "'empty'"
+        },
+        {
+            "code": "_CTA_PLACEMENT_POS_D",
+            "name": "mouser_pos_d",
+            "label": "After item position 'D'",
+            "ordinal": 45,
+            "category": "integrations",
+            "control_type": "number",
+            "scopes": [
+                "stream"
+            ],
+            "description": "After which tile do you want the CTA to be placed.",
+            "control_props": {
+                "validation": {
+                    "min": 20
+                }
+            }
+        },
+        {
+            "code": "_MOUSER_CTA_ID_E",
+            "name": "mouser_cta_id_e",
+            "label": "CTA ID 'E'",
+            "ordinal": 50,
+            "category": "integrations",
+            "control_type": "textbox",
+            "scopes": [
+                "stream"
+            ],
+            "description": "Please add the CTA ID for the CTA to be placed after 20 items [NOTE: NUMBERS ONLY].",
+            "control_props": {
+                "placeholder": "337760"
+            },
+            "default_value": "'empty'"
+        },
+        {
+            "code": "_CTA_PLACEMENT_POS_E",
+            "name": "mouser_pos_e",
+            "label": "After item position 'E'",
+            "ordinal": 55,
+            "category": "integrations",
+            "control_type": "number",
+            "scopes": [
+                "stream"
+            ],
+            "description": "After which tile do you want the CTA to be placed.",
+            "control_props": {
+                "validation": {
+                    "min": 20
+                }
+            }
         }
-    }
-]
+    ]
 }
