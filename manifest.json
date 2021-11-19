@@ -3,7 +3,7 @@
         {
             "code": "_ABM",
             "name": "Sample ABM at Stream Level",
-            "content": "",
+            "content": "{% if mouser_app_on == \"true\" %}\r\n<script>\r\n  const streamId = Hubs.appInstance.currentCollectionId.toString();\r\n  window.obData.ctasToManipulate = [];\r\n  const ctaList = [\r\n  {streamId: streamId, ctaId: '{{ mouser_cta_id_a }}', newPos: {{ mouser_pos_a }}},\r\n  {streamId: streamId, ctaId: '{{ mouser_cta_id_b }}', newPos: {{ mouser_pos_b }}},\r\n  {streamId: streamId, ctaId: '{{ mouser_cta_id_c }}', newPos: {{ mouser_pos_c }}},\r\n  {streamId: streamId, ctaId: '{{ mouser_cta_id_d }}', newPos: {{ mouser_pos_d }}},\r\n  {streamId: streamId, ctaId: '{{ mouser_cta_id_e }}', newPos: {{ mouser_pos_e }}}\r\n  ];\r\n  ctaList.forEach((item) => {\r\n    if(item.ctaId !== 'empty' && typeof item.ctaId === \"string\") {\r\n    window.obData.ctasToManipulate.push(item);\r\n    }\r\n  });\r\n<\/script>\r\n{% endif %}\r\n",
             "placement_code": "BODY_BOTTOM",
             "description": "where does this code live"
         }
