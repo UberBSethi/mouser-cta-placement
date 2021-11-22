@@ -48,10 +48,8 @@
                 "stream"
             ],
             "description": "After which tile do you want the CTA to be placed.",
-            "control_props": {
-                "validation": {
-                    "min": 20
-                }
+            "validation": {
+                "min": 20
             }
         },
         {
@@ -81,10 +79,8 @@
                 "stream"
             ],
             "description": "After which tile do you want the CTA to be placed.",
-            "control_props": {
-                "validation": {
-                    "min": 20
-                }
+            "validation": {
+                "min": 20
             }
         },
         {
@@ -114,10 +110,8 @@
                 "stream"
             ],
             "description": "After which tile do you want the CTA to be placed.",
-            "control_props": {
-                "validation": {
-                    "min": 20
-                }
+            "validation": {
+                "min": 20
             }
         },
         {
@@ -147,10 +141,8 @@
                 "stream"
             ],
             "description": "After which tile do you want the CTA to be placed.",
-            "control_props": {
-                "validation": {
-                    "min": 20
-                }
+            "validation": {
+                "min": 20
             }
         },
         {
@@ -180,10 +172,8 @@
                 "stream"
             ],
             "description": "After which tile do you want the CTA to be placed.",
-            "control_props": {
-                "validation": {
-                    "min": 20
-                }
+            "validation": {
+                "min": 20
             }
         }
     ]
